@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ title }}</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/indexcss.css')}}">
+<!--	<link rel="stylesheet" type="text/css" href="../css/index.css">-->
+	<script type="text/javascript" src="{{url_for('static',filename='js/readmore.js')}}"></script>
+	<script type="text/javascript" src="{{url_for('static',filename='js/canvass.js')}}"></script>
+	<script type="text/JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=1.4.2"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>Nepali Handwritten Character Recognition </h1>
+		</div>
+		<div class="navbar">
+			<ul>
+  				<li><a class="active" href="#home">Home</a></li>
+  				<li><a href="#">Documentation</a></li>
+  				<li><a href="#">About</a></li>
+
+			</ul>
+		</div>
+		<div class="main">
+			<div class="left">
+				<div class="canvass">
+					<div class="cnavas_content">Draw here</div>
+					<div class="canvas_clear">
+						<button name="redirect" class="button" value="clear" onClick="redirect()">Clear</button>
+					</div>
+				</div>
+				<div>
+					<canvas id="myCanvas">
+					Sorry, your browser does not support HTML5 canvas technology.
+					</canvas>
+				</div>
+				<div><button name="saveimage" class="canvasimage"  onClick="signatureSave()">Predict</button></div>
+				<div class="or">OR,</div>
+				<div>
+					<form action = "/uploader" method = "POST" enctype = "multipart/form-data">
+	  					<input type="file" id="file" name="file" accept="image/*">
+	  					<label for="file">Select image</label>
+	  					<input type="submit" value="Predict" name="submit">
+					</form>
+				</div>
+			</div>
+			<div class="right">
+				<div class="original_image_and_result">
+					<div class="original_image">
+						<img id="saveSignature" src={{photos}} alt="uploaded imgae will appear here">
+					</div>
+					<div class="result">
+						<div class="result_heading">Result</div>
+						<div class="result_main" id="result">{{result}}</div>
+					</div>
+				</div>
+				<div class="readmoreless">
+
+					<p><span id="dots">..............</span><span id="more">
+						{% for i in images_name %}
+						<img src="../static/outimg/{{i}}" height="100" width="140"></t>
+						{% endfor %}
+					</span></p>
+
+					<button onclick="myFunction()" id="myBtn">Show Process</button>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+<div class="last">copyrigth</div>
+
+
+
+<!--	<script src="../js/index.js"></script>-->
+</body>
+</html>
+
